@@ -36,39 +36,80 @@
   <tbody>
 
     <?php 
-            $sql="Select * from `crud`";
-            $result=mysqli_query($con,$sql);
+    //         $sql="Select * from `crud`";
+    //         $result=mysqli_query($con,$sql);
 
-            if($result) {
+    //         if($result) {
                
-                while($row=mysqli_fetch_assoc($result)) {
-                    $id=$row['id'];
-                    $productname=$row['productname'];
-                    $catno=$row['catno'];
-                    $casno=$row['casno'];
-                    $molf=$row['molf'];
-                    $molwt=$row['molwt'];
+    //             while($row=mysqli_fetch_assoc($result)) {
+    //                 $id=$row['id'];
+    //                 $productname=$row['productname'];
+    //                 $catno=$row['catno'];
+    //                 $casno=$row['casno'];
+    //                 $molf=$row['molf'];
+    //                 $molwt=$row['molwt'];
 
-                    echo '<tr>
-    <th>'.$id.'</th>
-      <td>'.$productname.'</td>
-      <td>'.$catno.'</td>
-      <td>'.$casno.'</td>
-      <td>'.$molf.'</td>
-      <td>'.$molwt.'</td>
-       <td>
-        <button class="btn btn-primary">
-        <a href="update.php?updateid='.$id.'" class="text-light">Update</a>
-        </button>
-        <button class="btn btn-danger">
-        <a href="delete.php?deleteid='.$id.'" class="text-light">Delete</a>
-        </button>
+    //                 echo '<tr>
+    // <th>'.$id.'</th>
+    //   <td>'.$productname.'</td>
+    //   <td>'.$catno.'</td>
+    //   <td>'.$casno.'</td>
+    //   <td>'.$molf.'</td>
+    //   <td>'.$molwt.'</td>
+    //    <td>
+    //     <button class="btn btn-primary">
+    //     <a href="update.php?updateid='.$id.'" class="text-light">Update</a>
+    //     </button>
+    //     <button class="btn btn-danger">
+    //     <a href="delete.php?deleteid='.$id.'" class="text-light">Delete</a>
+    //     </button>
         
-    </td>
-    </tr>';
-                }
-            }
-    ?>
+    // </td>
+    // </tr>';
+    //             }
+    //         }
+
+   
+    // Initialize a counter variable
+    $sr_no = 1;
+
+    $sql="SELECT * FROM `crud`";
+    $result=mysqli_query($con,$sql);
+
+    if($result) {
+        while($row=mysqli_fetch_assoc($result)) {
+            // Extract data from the row
+            $id = $row['id'];
+            $productname = $row['productname'];
+            $catno = $row['catno'];
+            $casno = $row['casno'];
+            $molf = $row['molf'];
+            $molwt = $row['molwt'];
+
+            // Display the data in a table row
+            echo '<tr>
+                <th scope="row">'.$sr_no.'</th>
+                <td>'.$productname.'</td>
+                <td>'.$catno.'</td>
+                <td>'.$casno.'</td>
+                <td>'.$molf.'</td>
+                <td>'.$molwt.'</td>
+                <td>
+                    <button class="btn btn-primary">
+                        <a href="update.php?updateid='.$id.'" class="text-light">Update</a>
+                    </button>
+                    <button class="btn btn-danger">
+                        <a href="delete.php?deleteid='.$id.'" class="text-light">Delete</a>
+                    </button>
+                </td>
+            </tr>';
+            
+            // Increment the counter
+            $sr_no++;
+        }
+    }
+?>
+    
     
    
    
